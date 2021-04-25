@@ -1,0 +1,30 @@
+{% extends 'notice/base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <h1>Challenge</h1>
+        </div>
+            <article class="media content-section">
+                <div class="media-body">
+                    <h2 class="article-title">{{ object.name }}</h2>
+                    <p class="article-content">Content: {{ object.content }}</p>
+                    <p class="article-content">Category: {{ challenge.category }}</p>
+                    <p class="article-content">Score: {{ challenge.score }}</p>
+                    {% if object.owner == user %}
+                    <p class="article-content">Flag: {{ challenge.flag }}</p>
+                    {% endif %}
+                    {% if challenge.file %}
+                    <a class="article-content" href="{{ challenge.file.url }}" download="{{ challenge.file.url }}">File: {{ challenge.file }}</a>
+                    {% endif %}
+                </div>
+                {% if object.owner == user %}
+                    <div>
+                        <a class="btn btn-primary mt-1 mb-1" href="{% url 'challenge-update' object.id %}">Update</a>
+                        <a class="btn btn-danger mt-1 mb-1" href="{% url 'challenge-delete' object.id %}">Delete</a>
+                    </div>
+                {% else %}
+               <a class="btn btn-primary mt-1 mb-1" href="{% url 'submit-flag' object.id %}">Answer</a>
+                {% endif %}
+             </article>
+         </div>
+{% endblock content %}

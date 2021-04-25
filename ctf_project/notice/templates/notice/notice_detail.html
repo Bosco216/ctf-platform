@@ -1,0 +1,26 @@
+{% extends 'notice/base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <h1>Notices</h1>
+        </div>
+            <article class="media content-section">
+                <img class ="rounded-circle article-img" src="{{ object.owner.profile.image.url }}" alt="">
+                <div class="media-body">
+                    <div class="article-metadata">
+                    <a class="mr-2" href="#">{{ object.owner }}</a>
+                    {% load tz %}
+                    <small class="text-muted">{{object.datetime_created|timezone:"Asia/Hong_Kong"}}</small>
+                    </div>
+                    <h2 class="article-title">{{ object.title }}</h2>
+                    <p class="article-content">{{ object.content }}</p>
+                </div>
+                {% if object.owner == user %}
+                    <div>
+                        <a class="btn btn-primary mt-1 mb-1" href="{% url 'notice-update' object.id %}">Update</a>
+                        <a class="btn btn-danger mt-1 mb-1" href="{% url 'notice-delete' object.id %}">Delete</a>
+                    </div>
+                {% endif %}
+             </article>
+         </div>
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends 'notice/base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <h1>Notices</h1>
+        </div>
+        {% for notice in notices %}
+            <article class="media content-section">
+                <img class ="rounded-circle article-img" src="{{ notice.owner.profile.image.url }}" alt="">
+                <div class="media-body">
+                    <div class="article-metadata">
+                    <a class="mr-2" href="#">{{ notice.owner }}</a>
+                    {% load tz %}
+                    <small class="text-muted">{{notice.datetime_created}}</small>
+                    </div>
+                    <h2><a class="article-title" href="{% url 'notice-detail' notice.id %}">{{ notice.title }}</a></h2>
+                    <p class="article-content">{{ notice.content }}</p>
+                </div>
+            </article>
+        {% endfor %}
+    </div>
+{% endblock content %}

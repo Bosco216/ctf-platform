@@ -1,0 +1,262 @@
+{% extends 'notice/base.html' %} 
+{% block content %} 
+    {% for competition in competitions %}
+        <!-- check if the competition has started or end -->
+        {% if current_time|date:"Y m d H i s" >= competition.start_time|date:"Y m d H i s" %} 
+        {% if current_time|date:"Y m d H i s" <= competition.end_time|date:"Y m d H i s" %}
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <h1>Challenges</h1>
+            </div>
+            <!-- Solved Challenge -->
+            <h2>Solved</h2>
+            {% for challenge in challenges %}
+                {% for team in Teams %}
+                    {% if team.user == request.user %}
+                        {% if challenge.name in team.solved_problems %}
+                                <a href="{% url 'challenge-detail' challenge.id %}">
+                                    <button style="background-color: gray;
+                                                border: none;
+                                                color: white;
+                                                padding: 15px 32px;
+                                                text-align: center;
+                                                text-decoration: none;  
+                                                display: inline-block;
+                                                font-size: 16px;
+                                                margin: 4px 2px;
+                                                cursor: pointer;
+                                                width: 200px;
+                                                height: 100px;">
+                                        <div style="font-weight: bold;">
+                                            <p class="article-title">{{ challenge.name }}</p>
+                                            <p class="article-content">Point : {{ challenge.score }}</p>
+                                        </div>
+                                    </button>
+                                </a>
+                            {% endif %}
+                    {% endif %}
+                {% endfor %} 
+            {% endfor %}
+            <!-- Web -->
+            <h2>Web</h2>
+            {% for challenge in challenges %}
+                {% for team in Teams %}
+                    {% if team.user == request.user %}
+                             <!-- if problem is solved -->
+                            {% if challenge.name in team.solved_problems %}
+                                    <!-- do noting -->
+                            {% else %}
+                                {% if challenge.category == "Web" %}
+                                    <a href="{% url 'challenge-detail' challenge.id %}">
+                                        <button style="background-color: #bfca21;
+                                                    border: none;
+                                                    color: white;
+                                                    padding: 15px 32px;
+                                                    text-align: center;
+                                                    text-decoration: none;  
+                                                    display: inline-block;
+                                                    font-size: 16px;
+                                                    margin: 4px 2px;
+                                                    cursor: pointer;
+                                                    width: 200px;
+                                                    height: 100px;">
+                                            <div style="font-weight: bold;">
+                                                <p class="article-title">{{ challenge.name }}</p>
+                                                <p class="article-content">Point : {{ challenge.score }}</p>
+                                            </div>
+                                        </button>
+                                    </a> 
+                                {% endif %}
+                            {% endif %}
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+             <!-- Cryptography -->
+             <h2>Cryptography</h2>
+             {% for challenge in challenges %}
+                 {% for team in Teams %}
+                     {% if team.user == request.user %}
+                              <!-- if problem is solved -->
+                             {% if challenge.name in team.solved_problems %}
+                                     <!-- do noting -->
+                             {% else %}
+                                 {% if challenge.category == "Cryptography" %}
+                                     <a href="{% url 'challenge-detail' challenge.id %}">
+                                         <button style="background-color: #4caf65;
+                                                     border: none;
+                                                     color: white;
+                                                     padding: 15px 32px;
+                                                     text-align: center;
+                                                     text-decoration: none;  
+                                                     display: inline-block;
+                                                     font-size: 16px;
+                                                     margin: 4px 2px;
+                                                     cursor: pointer;
+                                                     width: 200px;
+                                                     height: 100px;">
+                                             <div style="font-weight: bold;">
+                                                 <p class="article-title">{{ challenge.name }}</p>
+                                                 <p class="article-content">Point : {{ challenge.score }}</p>
+                                             </div>
+                                         </button>
+                                     </a> 
+                                 {% endif %}
+                             {% endif %}
+                     {% endif %}
+                 {% endfor %}
+             {% endfor %}
+             <!-- Forensics -->
+             <h2>Forensics</h2>
+             {% for challenge in challenges %}
+                 {% for team in Teams %}
+                     {% if team.user == request.user %}
+                              <!-- if problem is solved -->
+                             {% if challenge.name in team.solved_problems %}
+                                     <!-- do noting -->
+                             {% else %}
+                                 {% if challenge.category == "Forensics" %}
+                                     <a href="{% url 'challenge-detail' challenge.id %}">
+                                         <button style="background-color: #af604c;
+                                                     border: none;
+                                                     color: white;
+                                                     padding: 15px 32px;
+                                                     text-align: center;
+                                                     text-decoration: none;  
+                                                     display: inline-block;
+                                                     font-size: 16px;
+                                                     margin: 4px 2px;
+                                                     cursor: pointer;
+                                                     width: 200px;
+                                                     height: 100px;">
+                                             <div style="font-weight: bold;">
+                                                 <p class="article-title">{{ challenge.name }}</p>
+                                                 <p class="article-content">Point : {{ challenge.score }}</p>
+                                             </div>
+                                         </button>
+                                     </a> 
+                                 {% endif %}
+                             {% endif %}
+                     {% endif %}
+                 {% endfor %}
+             {% endfor %}
+             <!-- Reverse -->
+             <h2>Reverse</h2>
+             {% for challenge in challenges %}
+                 {% for team in Teams %}
+                     {% if team.user == request.user %}
+                              <!-- if problem is solved -->
+                             {% if challenge.name in team.solved_problems %}
+                                     <!-- do noting -->
+                             {% else %}
+                                 {% if challenge.category == "Reverse" %}
+                                     <a href="{% url 'challenge-detail' challenge.id %}">
+                                         <button style="background-color: skyblue;
+                                                     border: none;
+                                                     color: white;
+                                                     padding: 15px 32px;
+                                                     text-align: center;
+                                                     text-decoration: none;  
+                                                     display: inline-block;
+                                                     font-size: 16px;
+                                                     margin: 4px 2px;
+                                                     cursor: pointer;
+                                                     width: 200px;
+                                                     height: 100px;">
+                                             <div style="font-weight: bold;">
+                                                 <p class="article-title">{{ challenge.name }}</p>
+                                                 <p class="article-content">Point : {{ challenge.score }}</p>
+                                             </div>
+                                         </button>
+                                     </a> 
+                                 {% endif %}
+                             {% endif %}
+                     {% endif %}
+                 {% endfor %}
+             {% endfor %}
+             <!-- Exploitation -->
+             <h2>Exploitation</h2>
+             {% for challenge in challenges %}
+                 {% for team in Teams %}
+                     {% if team.user == request.user %}
+                              <!-- if problem is solved -->
+                             {% if challenge.name in team.solved_problems %}
+                                     <!-- do noting -->
+                             {% else %}
+                                 {% if challenge.category == "Exploitation" %}
+                                     <a href="{% url 'challenge-detail' challenge.id %}">
+                                         <button style="background-color: #e93c1e;
+                                                     border: none;
+                                                     color: white;
+                                                     padding: 15px 32px;
+                                                     text-align: center;
+                                                     text-decoration: none;  
+                                                     display: inline-block;
+                                                     font-size: 16px;
+                                                     margin: 4px 2px;
+                                                     cursor: pointer;
+                                                     width: 200px;
+                                                     height: 100px;">
+                                             <div style="font-weight: bold;">
+                                                 <p class="article-title">{{ challenge.name }}</p>
+                                                 <p class="article-content">Point : {{ challenge.score }}</p>
+                                             </div>
+                                         </button>
+                                     </a> 
+                                 {% endif %}
+                             {% endif %}
+                     {% endif %}
+                 {% endfor %}
+             {% endfor %}
+             <!-- Miscellaneous -->
+             <h2>Miscellaneous</h2>
+             {% for challenge in challenges %}
+                 {% for team in Teams %}
+                     {% if team.user == request.user %}
+                              <!-- if problem is solved -->
+                             {% if challenge.name in team.solved_problems %}
+                                     <!-- do noting -->
+                             {% else %}
+                                 {% if challenge.category == "Miscellaneous" %}
+                                     <a href="{% url 'challenge-detail' challenge.id %}">
+                                         <button style="background-color: #4c93af;
+                                                     border: none;
+                                                     color: white;
+                                                     padding: 15px 32px;
+                                                     text-align: center;
+                                                     text-decoration: none;  
+                                                     display: inline-block;
+                                                     font-size: 16px;
+                                                     margin: 4px 2px;
+                                                     cursor: pointer;
+                                                     width: 200px;
+                                                     height: 100px;">
+                                             <div style="font-weight: bold;">
+                                                 <p class="article-title">{{ challenge.name }}</p>
+                                                 <p class="article-content">Point : {{ challenge.score }}</p>
+                                             </div>
+                                         </button>
+                                     </a> 
+                                 {% endif %}
+                             {% endif %}
+                     {% endif %}
+                 {% endfor %}
+             {% endfor %}
+        </div>
+        <!-- The competition has been ended -->
+        {% elif current_time|date:"Y m d H i s" > competition.end_time|date:"Y m d H i s"%}
+            <div class="container">
+                <div class="row justify-content-md-center">
+                    <h1>The competition has been ended.</h1>
+                </div>
+            </div>
+        {% endif %}
+        <!-- The competition does not start yet -->
+        {% else %}
+            <div class="container">
+                <div class="row justify-content-md-center">
+                    <h1>The competition does not start yet.</h1>
+                </div>
+            </div>
+        {% endif %} 
+    {% endfor %} 
+{% endblock content %}

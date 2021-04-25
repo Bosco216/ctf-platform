@@ -1,0 +1,41 @@
+{% extends 'notice/base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <h1>Scoreboard</h1>
+        </div>
+        <style>
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 100%;
+            }
+            
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+            
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+            </style>
+            <table>
+                <tr>
+                    <th>Rank</th>
+                    <th>Team Name</th>
+                    <th>Score</th>
+                </tr>
+                {% for team in Teams %}
+                {% if  not team.user.is_superuser %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td><img class ="rounded-circle article-img" src="{{ team.user.profile.image.url }}" alt="">{{ team.user }}</td>
+                    <td>{{team.score }}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </table>
+    </div>
+{% endblock content %}

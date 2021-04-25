@@ -1,0 +1,164 @@
+{% extends 'notice/base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <h1>Challenges</h1>
+        </div>
+        <!-- Web -->
+         <h2>Web</h2>
+        {% for challenge in challenges %}
+            {% if challenge.category  == "Web" %}
+            <a href="{% url 'challenge-detail' challenge.id %}">
+                <button 
+                style="background-color: #bfca21;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;  
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                width: 200px;
+                height: 100px;">    
+                    <div style="font-weight: bold;">
+                        <p class="article-title">{{ challenge.name }}</p>
+                        <p class="article-content">Point : {{ challenge.score }}</p>
+                    </div>
+                </button>
+            </a>
+            {% endif %}
+        {% endfor %}
+        <!-- Cryptography -->
+        <h2>Cryptography</h2>
+        {% for challenge in challenges %}
+            {% if challenge.category  == "Cryptography" %}
+            <a href="{% url 'challenge-detail' challenge.id %}">
+                <button 
+                style="background-color: #4caf65;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;  
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                width: 200px;
+                height: 100px;">    
+                    <div style="font-weight: bold;">
+                        <p class="article-title">{{ challenge.name }}</p>
+                        <p class="article-content">Point : {{ challenge.score }}</p>
+                    </div>
+                </button>
+            </a>
+            {% endif %}
+        {% endfor %}
+        <!-- Forensics -->
+        <h2>Forensics</h2>
+        {% for challenge in challenges %}
+            {% if challenge.category  == "Forensics" %}
+            <a href="{% url 'challenge-detail' challenge.id %}">
+                <button 
+                style="background-color: #af604c;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;  
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                width: 200px;
+                height: 100px;">    
+                    <div style="font-weight: bold;">
+                        <p class="article-title">{{ challenge.name }}</p>
+                        <p class="article-content">Point : {{ challenge.score }}</p>
+                    </div>
+                </button>
+            </a>
+            {% endif %}
+        {% endfor %}
+        <!-- Reverse -->
+        <h2>Reverse</h2>
+        {% for challenge in challenges %}
+            {% if challenge.category  == "Reverse" %}
+            <a href="{% url 'challenge-detail' challenge.id %}">
+                <button 
+                style="background-color: #87ceeb;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;  
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                width: 200px;
+                height: 100px;">    
+                    <div style="font-weight: bold;">
+                        <p class="article-title">{{ challenge.name }}</p>
+                        <p class="article-content">Point : {{ challenge.score }}</p>
+                    </div>
+                </button>
+            </a>
+            {% endif %}
+        {% endfor %}
+        <!-- Exploitation -->
+         <h2>Exploitation</h2>
+        {% for challenge in challenges %}
+            {% if challenge.category  == "Exploitation" %}
+            <a href="{% url 'challenge-detail' challenge.id %}">
+                <button 
+                style="background-color: #e93c1f;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;  
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                width: 200px;
+                height: 100px;">    
+                    <div style="font-weight: bold;">
+                        <p class="article-title">{{ challenge.name }}</p>
+                        <p class="article-content">Point : {{ challenge.score }}</p>
+                    </div>
+                </button>
+            </a>
+            {% endif %}
+        {% endfor %}
+        <!-- Miscellaneous -->
+        <h2>Miscellaneous</h2>
+        {% for challenge in challenges %}
+            {% if challenge.category  == "Miscellaneous" %}
+            <a href="{% url 'challenge-detail' challenge.id %}">
+                <button 
+                style="background-color: #4d93af;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;  
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                width: 200px;
+                height: 100px;">    
+                    <div style="font-weight: bold;">
+                        <p class="article-title">{{ challenge.name }}</p>
+                        <p class="article-content">Point : {{ challenge.score }}</p>
+                    </div>
+                </button>
+            </a>
+            {% endif %}
+        {% endfor %}    
+    </div>
+{% endblock content %}
